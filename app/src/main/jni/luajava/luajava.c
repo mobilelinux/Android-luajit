@@ -41,7 +41,10 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
-
+#if (LUAJIT == 1)
+#define luaL_setn(L,i,j)((void)0)
+#define luaL_getn(L,i)((int)lua_objlen(L,i))
+#endif
 /* Constant that is used to index the JNI Environment */
 #define LUAJAVAJNIENVTAG      "__JNIEnv"
 /* Defines wheter the metatable is of a java Object */
